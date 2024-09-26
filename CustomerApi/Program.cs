@@ -9,7 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.AddServiceDefaults();
 
-builder.Services.AddMassTransit(x=>
+builder.Services.AddMassTransit(x =>
 {
     x.UsingRabbitMq((context, cfg) =>
     {
@@ -17,6 +17,7 @@ builder.Services.AddMassTransit(x=>
         var connectionString = configService.GetConnectionString("RabbitServer");
         cfg.Host(connectionString);
     });
+    x.AddMetrics();
 });
 
 var app = builder.Build();
@@ -35,6 +36,7 @@ var summaries = new[]
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
+
 app.MapGet("/weatherforecast", () =>
     {
         var forecast = Enumerable.Range(1, 5).Select(index =>
@@ -48,6 +50,13 @@ app.MapGet("/weatherforecast", () =>
         return forecast;
     })
     .WithName("GetWeatherForecast")
+    .WithOpenApi();
+
+app.MapPost("/message", (CustomerApi.MyMessage message, IBus bus) =>
+    {
+        bus.Publish(message);
+        Results.Ok(message);
+    }).WithName("PostMessage")
     .WithOpenApi();
 
 app.Run();

@@ -24,6 +24,7 @@ namespace CustomerWorker
             builder.AddServiceDefaults();
             builder.Services.AddMassTransit(x =>
             {
+                x.AddMetrics();
                 x.UsingRabbitMq((context, cfg) =>
                 {
                     var configService = context.GetRequiredService<IConfiguration>();
