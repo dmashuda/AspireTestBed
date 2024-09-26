@@ -11,6 +11,12 @@
 
     <ItemGroup>
         <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.0"/>
+        <PackageReference Include="Aspire.Hosting.RabbitMQ" Version="8.2.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CustomerApi\CustomerApi.csproj" />
+      <ProjectReference Include="..\WebhookSender\WebhookSender.csproj" />
     </ItemGroup>
 
 </Project>

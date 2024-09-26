@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireTestBed", "AspireTestBed\AspireTestBed.csproj", "{13F46140-37FD-453F-A907-C615022F42C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerApi", "CustomerApi\CustomerApi.csproj", "{AFBAA0FE-C843-413F-B0D5-881BF6FDE632}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebhookSender", "WebhookSender\WebhookSender.csproj", "{76979DB9-A76D-49C2-BBB6-F02D9EADC9E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{13F46140-37FD-453F-A907-C615022F42C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13F46140-37FD-453F-A907-C615022F42C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13F46140-37FD-453F-A907-C615022F42C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFBAA0FE-C843-413F-B0D5-881BF6FDE632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFBAA0FE-C843-413F-B0D5-881BF6FDE632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFBAA0FE-C843-413F-B0D5-881BF6FDE632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFBAA0FE-C843-413F-B0D5-881BF6FDE632}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76979DB9-A76D-49C2-BBB6-F02D9EADC9E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76979DB9-A76D-49C2-BBB6-F02D9EADC9E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76979DB9-A76D-49C2-BBB6-F02D9EADC9E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76979DB9-A76D-49C2-BBB6-F02D9EADC9E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
