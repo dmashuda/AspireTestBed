@@ -6,7 +6,7 @@ var rabbit = builder.AddRabbitMQ("RabbitServer");
 builder.AddProject<Projects.CustomerApi>("CustomerApi")
     .WithReference(rabbit);
 
-builder.AddProject<Projects.WebhookSender>("WebhookSender")
+builder.AddProject<Projects.CustomerWorker>("CustomerWorker")
     .WithReference(rabbit);
 
 

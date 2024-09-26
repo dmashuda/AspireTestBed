@@ -16,7 +16,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\CustomerApi\CustomerApi.csproj" />
-      <ProjectReference Include="..\WebhookSender\WebhookSender.csproj" />
+      <ProjectReference Include="..\CustomerWorker\CustomerWorker.csproj" />
     </ItemGroup>
 
 </Project>
