@@ -1,3 +1,4 @@
+using MassTransit;
 using ServiceDefaults;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.AddServiceDefaults();
+
+builder.Services.AddMassTransit(x=>
+{
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        var configService = context.GetRequiredService<IConfiguration>();
+        var connectionString = configService.GetConnectionString("RabbitServer");
+        cfg.Host(connectionString);
+    });
+});
 
 var app = builder.Build();
 
