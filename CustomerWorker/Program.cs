@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using MassTransit;
@@ -15,37 +16,31 @@ namespace CustomerWorker
     {
         public static async Task Main(string[] args)
         {
-            await CreateHostBuilder(args).Build().RunAsync();
+            var app = CreateHostBuilder(args).Build();
+
+            await app.RunAsync();
         }
 
         public static HostApplicationBuilder CreateHostBuilder(string[] args)
         {
             var builder = Host.CreateApplicationBuilder(args);
-            builder.AddServiceDefaults();
+            var connectionString = builder.Configuration.GetConnectionString("RabbitServer");
             builder.Services.AddMassTransit(x =>
             {
+                x.AddConsumer<ConsumeMyMessage>();
                 x.AddMetrics();
                 x.UsingRabbitMq((context, cfg) =>
                 {
-                    var configService = context.GetRequiredService<IConfiguration>();
-                    var connectionString = configService.GetConnectionString("RabbitServer");
                     cfg.Host(connectionString);
+                    cfg.ConfigureEndpoints(context);
                 });
                 x.SetKebabCaseEndpointNameFormatter();
-
-                // By default, sagas are in-memory, but should be changed to a durable
-                // saga repository.
-                x.SetInMemorySagaRepositoryProvider();
-
-                var entryAssembly = Assembly.GetEntryAssembly();
-
-                x.AddConsumers(entryAssembly);
-                x.AddSagaStateMachines(entryAssembly);
-                x.AddSagas(entryAssembly);
-                x.AddActivities(entryAssembly);
             });
+            builder.AddServiceDefaults();
 
             return builder;
         }
+        
     }
+    
 }

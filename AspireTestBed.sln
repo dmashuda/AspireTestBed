@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDefaults", "ServiceD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerWorker", "CustomerWorker\CustomerWorker.csproj", "{6263CEA3-F249-45AD-AFD1-6E75F22D33EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerContracts", "CustomerContracts\CustomerContracts.csproj", "{6E3D7985-BAA2-4321-AA39-C1E11875A4D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{6263CEA3-F249-45AD-AFD1-6E75F22D33EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6263CEA3-F249-45AD-AFD1-6E75F22D33EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6263CEA3-F249-45AD-AFD1-6E75F22D33EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E3D7985-BAA2-4321-AA39-C1E11875A4D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E3D7985-BAA2-4321-AA39-C1E11875A4D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E3D7985-BAA2-4321-AA39-C1E11875A4D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E3D7985-BAA2-4321-AA39-C1E11875A4D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,4 @@
-namespace CustomerApi;
+﻿namespace CustomerContracts;
 
 public class MyMessage
 {

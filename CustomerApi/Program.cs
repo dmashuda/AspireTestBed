@@ -1,4 +1,5 @@
 using MassTransit;
+using MassTransit.Topology;
 using ServiceDefaults;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,13 +10,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.AddServiceDefaults();
 
+var connectionString = builder.Configuration.GetConnectionString("RabbitServer");
+
+
 builder.Services.AddMassTransit(x =>
 {
     x.UsingRabbitMq((context, cfg) =>
     {
-        var configService = context.GetRequiredService<IConfiguration>();
-        var connectionString = configService.GetConnectionString("RabbitServer");
         cfg.Host(connectionString);
+        cfg.ConfigureEndpoints(context);
     });
     x.AddMetrics();
 });
@@ -52,7 +55,7 @@ app.MapGet("/weatherforecast", () =>
     .WithName("GetWeatherForecast")
     .WithOpenApi();
 
-app.MapPost("/message", (CustomerApi.MyMessage message, IBus bus) =>
+app.MapPost("/message", (CustomerContracts.MyMessage message, IBus bus) =>
     {
         bus.Publish(message);
         Results.Ok(message);
